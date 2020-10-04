@@ -1,0 +1,31 @@
+{
+  "name": "@almeidx/is-empty",
+  "version": "1.0.0",
+  "description": "Tiny millisecond conversion utility",
+  "repository": "https://github.com/almeidx/is-empty.git",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "is-empty",
+    "empty",
+    "length-check"
+  ],
+  "author": "almeidx <almeidx@pm.me> (almeidx.me)",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "lint": "eslint src --ext ts",
+    "lint:fix": "eslint src --ext ts --fix",
+    "prepublish": "rimraf dist && tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "2.21.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.0.3"
+  },
+  "license": "MIT"
+}
