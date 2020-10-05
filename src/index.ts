@@ -66,6 +66,8 @@ const baseKeys = (object: any) => {
 export const isEmpty = (value: any): boolean => {
   if (value == null) return true;
 
+  if (typeof value === 'number') return !value;
+
   if (
     (value != null && typeof value.length === 'number' && !isFunction(value))
     && (
