@@ -1,6 +1,6 @@
 {
   "name": "@almeidx/is-empty",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Tiny millisecond conversion utility",
   "repository": "https://github.com/almeidx/is-empty.git",
   "main": "dist/index.js",
