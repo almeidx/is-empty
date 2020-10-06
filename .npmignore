@@ -1,1 +1,5 @@
 src
+jest.config.js
+.eslintrc.json
+.editorconfig
+.gitattributes

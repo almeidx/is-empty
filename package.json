@@ -3,18 +3,12 @@
   "version": "1.1.0",
   "description": "Tiny millisecond conversion utility",
   "repository": "https://github.com/almeidx/is-empty.git",
+  "author": "almeidx <almeidx@pm.me> (almeidx.me)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "keywords": [
-    "is-empty",
-    "empty",
-    "length-check"
-  ],
-  "author": "almeidx <almeidx@pm.me> (almeidx.me)",
   "scripts": {
     "build": "rimraf dist && tsc",
-    "lint": "eslint src --ext ts",
-    "lint:fix": "eslint src --ext ts --fix",
+    "lint": "eslint src --ext ts --fix",
     "prepublish": "rimraf dist && tsc",
     "test": "jest"
   },
@@ -32,5 +26,10 @@
     "ts-jest": "^26.4.1",
     "typescript": "^4.0.3"
   },
+  "keywords": [
+    "is-empty",
+    "empty",
+    "length-check"
+  ],
   "license": "MIT"
 }

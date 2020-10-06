@@ -1,68 +1,58 @@
 import isEmpty from '..';
 
-describe('Testing isEmpty function', () => {
-  it('should return true when the input is 0', () => {
+describe('isEmpty()', () => {
+  it('should return `true` for empty values', () => {
+    expect(isEmpty(true)).toBe(true);
+    expect(isEmpty(Array.prototype.slice)).toBe(true);
     expect(isEmpty(0)).toBe(true);
+    expect(isEmpty(NaN)).toBe(true);
+    expect(isEmpty(/x/)).toBe(true);
+    expect(isEmpty(Symbol('a'))).toBe(true);
+    expect(isEmpty()).toBe(true);
+    expect(isEmpty('')).toBe(true);
+    expect(isEmpty(Buffer.from(''))).toBe(true);
   });
 
-  it('should return false when the input is -1', () => {
-    expect(isEmpty(-1)).toBe(false);
+  it('should return `false` for non-empty values', () => {
+    expect(isEmpty(0)).toBe(true);
+    expect(isEmpty([0])).toBe(false);
+    expect(isEmpty({ a: 0 })).toBe(false);
+    expect(isEmpty('a')).toBe(false);
   });
 
-  it('should return false when the input is 1', () => {
-    expect(isEmpty(1)).toBe(false);
+  it('should work with an object that has a `length` property', () => {
+    expect(isEmpty({ length: 0 })).toBe(false);
   });
 
-  it('should return true when the input is an empty array', () => {
-    expect(isEmpty([])).toBe(true);
+  it('should work with `arguments` objects', () => {
+    expect(isEmpty((function n() { return arguments; }.apply(undefined)))).toBe(true);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    expect(isEmpty((function n(a: number) { return arguments; }.apply(undefined, [1])))).toBe(false);
   });
 
-  it('should return false when the input is an array with one or more elements', () => {
-    expect(isEmpty([null])).toBe(false);
-    expect(isEmpty([null, 2, 3])).toBe(false);
+  it('should work with prototype objects', () => {
+    function Foo() {}
+    Foo.prototype = { constructor: Foo };
+
+    expect(isEmpty(Foo.prototype)).toBe(true);
+
+    Foo.prototype.a = 1;
+    expect(isEmpty(Foo.prototype)).toBe(false);
   });
 
-  it('should return true when the input is an empty object', () => {
-    expect(isEmpty({})).toBe(true);
-  });
-
-  it('should return false when the input is an object with properties', () => {
-    expect(isEmpty({ a: 1 })).toBe(false);
-  });
-
-  it('should return true when the input is an empty set', () => {
-    expect(isEmpty(new Set())).toBe(true);
-  });
-
-  it('should return false when the input is a set with one or more items', () => {
-    const set = new Set();
-    set.add(1);
-    expect(isEmpty(set)).toBe(false);
-    set.add(2);
-    expect(isEmpty(set)).toBe(false);
-  });
-
-  it('should return true when the input is an empty map', () => {
-    expect(isEmpty(new Map())).toBe(true);
-  });
-
-  it('should return false when the input is a map with one or more items', () => {
+  it('should work with maps', () => {
     const map = new Map();
+    expect(isEmpty(map)).toBe(true);
     map.set('a', 1);
     expect(isEmpty(map)).toBe(false);
-    map.set('b', 2);
-    expect(isEmpty(map)).toBe(false);
+    map.clear();
   });
 
-  it('should return true when the input is an empty string', () => {
-    expect(isEmpty('')).toBe(true);
-  });
-
-  it('should return false when the input is a non-empty string', () => {
-    expect(isEmpty('abc123')).toBe(false);
-  });
-
-  it('should return true when the input is NaN', () => {
-    expect(isEmpty(NaN)).toBe(true);
+  it('should work with sets', () => {
+    const set = new Set();
+    expect(isEmpty(set)).toBe(true);
+    set.add(1);
+    expect(isEmpty(set)).toBe(false);
+    set.clear();
   });
 });

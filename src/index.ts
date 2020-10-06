@@ -45,17 +45,7 @@ function isPrototype(value: any) {
   return value === (typeof valProto === 'function' && valProto.prototype) || Object.prototype;
 }
 
-const overArg = (
-  func: (...args: any[]) => any,
-  transform: any,
-// eslint-disable-next-line function-paren-newline
-): (...args: any[]) => any => function recursive(arg) {
-  return func(transform(arg));
-};
-
 const baseKeys = (object: any) => {
-  if (!isPrototype(object)) return overArg(Object.keys, Object)(object);
-
   const result = [];
   for (const key in Object(object)) {
     if (Object.prototype.hasOwnProperty.call(object, key) && key !== 'constructor') result.push(key);
@@ -63,13 +53,17 @@ const baseKeys = (object: any) => {
   return result;
 };
 
-export const isEmpty = (value: any): boolean => {
+/**
+ * Checks if `value` is an empty object, collection, map, or set.
+ * @param value The `value` to check
+ * @returns Returns `true` if value is empty, else `false`.
+ */
+export const isEmpty = (value?: any): boolean => {
   if (value == null) return true;
-
   if (typeof value === 'number') return !value;
 
   if (
-    (value != null && typeof value.length === 'number' && !isFunction(value))
+    (typeof value.length === 'number' && !isFunction(value))
     && (
       Array.isArray(value)
       || typeof value === 'string'
