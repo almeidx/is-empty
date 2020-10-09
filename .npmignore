@@ -1,5 +1,9 @@
-src
-jest.config.js
-.eslintrc.json
+node_modules/
+src/
 .editorconfig
+.eslintrc.json
 .gitattributes
+.gitignore
+jest.config.js
+tsconfig.json
+yarn.lock
