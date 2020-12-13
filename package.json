@@ -1,6 +1,6 @@
 {
   "name": "@almeidx/is-empty",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Checks if the value is an empty object, collection, map, or set.",
   "repository": "https://github.com/almeidx/is-empty.git",
   "author": "almeidx <almeidx@pm.me> (almeidx.me)",
