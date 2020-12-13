@@ -1,7 +1,7 @@
 {
   "name": "@almeidx/is-empty",
   "version": "1.2.2",
-  "description": "Tiny millisecond conversion utility",
+  "description": "Checks if the value is an empty object, collection, map, or set.",
   "repository": "https://github.com/almeidx/is-empty.git",
   "author": "almeidx <almeidx@pm.me> (almeidx.me)",
   "main": "dist/index.js",
@@ -15,12 +15,8 @@
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.2",
-    "@typescript-eslint/eslint-plugin": "^3.10.1",
-    "@typescript-eslint/parser": "^3.10.1",
     "eslint": "^7.4.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "2.21.2",
-    "eslint-plugin-jest": "^24.0.2",
+    "eslint-config-almeida-ts": "^0.2.0",
     "jest": "^26.5.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.1",
@@ -31,5 +27,9 @@
     "empty",
     "length-check"
   ],
+  "bugs": {
+    "url": "https://github.com/almeidx/is-empty/issues"
+  },
+  "homepage": "https://github.com/almeidx/is-empty#readme",
   "license": "MIT"
 }

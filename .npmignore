@@ -8,4 +8,5 @@ src/
 .gitignore
 jest.config.js
 tsconfig.json
+tsconfig.eslint.json
 yarn.lock

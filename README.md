@@ -17,7 +17,7 @@ npm i @almeidx/is-empty
 
 ## Usage
 ```ts
-isEmpty(value?: any)
+isEmpty(value?: any): boolean
 ```
 
 ## Examples

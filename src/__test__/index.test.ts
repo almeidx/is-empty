@@ -25,19 +25,23 @@ describe('isEmpty()', () => {
   });
 
   it('should work with `arguments` objects', () => {
-    expect(isEmpty((function n() { return arguments; }.apply(undefined)))).toBe(true);
+    expect(isEmpty((function n(): IArguments {
+      return arguments;
+    }.apply(undefined)))).toBe(true);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    expect(isEmpty((function n(a: number) { return arguments; }.apply(undefined, [1])))).toBe(false);
+    expect(isEmpty((function n(a: number): IArguments {
+      return arguments;
+    }.apply(undefined, [1])))).toBe(false);
   });
 
   it('should work with prototype objects', () => {
-    function Foo() {}
-    Foo.prototype = { constructor: Foo };
+    function foo(): void {}
+    foo.prototype = { constructor: foo };
 
-    expect(isEmpty(Foo.prototype)).toBe(true);
+    expect(isEmpty(foo.prototype)).toBe(true);
 
-    Foo.prototype.a = 1;
-    expect(isEmpty(Foo.prototype)).toBe(false);
+    foo.prototype.a = 1;
+    expect(isEmpty(foo.prototype)).toBe(false);
   });
 
   it('should work with maps', () => {
@@ -46,6 +50,7 @@ describe('isEmpty()', () => {
     map.set('a', 1);
     expect(isEmpty(map)).toBe(false);
     map.clear();
+    expect(isEmpty(map)).toBe(true);
   });
 
   it('should work with sets', () => {
@@ -54,5 +59,6 @@ describe('isEmpty()', () => {
     set.add(1);
     expect(isEmpty(set)).toBe(false);
     set.clear();
+    expect(isEmpty(set)).toBe(true);
   });
 });

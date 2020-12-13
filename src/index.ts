@@ -40,12 +40,12 @@ const isFunction = (value: any): boolean => {
     || tag === '[object Proxy]';
 };
 
-function isPrototype(value: any) {
-  const valProto = value && value.constructor;
-  return value === (typeof valProto === 'function' && valProto.prototype) || Object.prototype;
+function isPrototype(value: any): boolean {
+  const valProto = value?.constructor;
+  return value === ((typeof valProto === 'function' && valProto.prototype) || Object.prototype);
 }
 
-const baseKeys = (object: any) => {
+const baseKeys = (object: any): string[] => {
   const result = [];
   for (const key in Object(object)) {
     if (Object.prototype.hasOwnProperty.call(object, key) && key !== 'constructor') result.push(key);
