@@ -25,7 +25,7 @@ isEmpty(value?: any): boolean
 ```js
 import isEmpty from '@almeidx/is-empty';
 // or
-const isEmpty = require('@almeidx/is-empty');
+const { isEmpty } = require('@almeidx/is-empty');
 
 isEmpty(null);
 // => true
