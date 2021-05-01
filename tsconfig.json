@@ -1,5 +1,5 @@
 {
-	"compilerOptions": {
+  "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "noUnusedLocals": false,
@@ -8,14 +8,10 @@
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
-		"target": "es2019",
-		"rootDir": "src",
-		"outDir": "dist",
-		"declaration": true
-	},
-	"exclude": [
-		"node_modules",
-    "dist",
-    "src/__test__"
-	]
+    "target": "es2019",
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true
+  },
+  "exclude": ["node_modules", "dist", "src/__test__"]
 }

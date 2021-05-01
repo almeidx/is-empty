@@ -1,13 +1,76 @@
 {
-  "extends": "almeida-ts",
+  "$schema": "http://json.schemastore.org/eslintrc",
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": "marine/prettier/node",
+  "ignorePatterns": ["dist/*", "node_modules/*", ".yarn/*"],
+  "overrides": [
+    {
+      "files": "*.js",
+      "rules": {
+        "simple-import-sort/imports": 0
+      }
+    }
+  ],
   "parserOptions": {
     "project": "./tsconfig.eslint.json"
   },
+  "plugins": ["simple-import-sort"],
+  "root": true,
   "rules": {
-    "@typescript-eslint/comma-dangle": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-redeclare": "off",
-    "@typescript-eslint/no-shadow": "off",
-    "prefer-rest-params": "off"
+    "@typescript-eslint/indent": 0,
+    "@typescript-eslint/naming-convention": [
+      2,
+      {
+        "format": ["PascalCase", "UPPER_CASE", "camelCase"],
+        "leadingUnderscore": "allow",
+        "selector": "variable"
+      },
+      {
+        "format": ["PascalCase"],
+        "leadingUnderscore": "allow",
+        "selector": "typeLike"
+      },
+      {
+        "format": ["camelCase"],
+        "leadingUnderscore": "allow",
+        "selector": "function"
+      }
+    ],
+    "@typescript-eslint/no-dynamic-delete": 0,
+    "@typescript-eslint/no-extraneous-class": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/space-before-function-paren": 0,
+    "no-eq-null": 0,
+    "no-implicit-coercion": 0,
+    "no-negated-condition": 0,
+    "prettier/prettier": [
+      2,
+      {
+        "endOfLine": "lf",
+        "printWidth": 120,
+        "quoteProps": "as-needed",
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "all",
+        "useTabs": false
+      }
+    ],
+    "simple-import-sort/exports": 2,
+    "simple-import-sort/imports": 2,
+    "sort-imports": 0,
+    "sort-keys": 2,
+    "sort-vars": 2,
+    "spaced-comment": [
+      1,
+      "always",
+      {
+        "line": {
+          "markers": ["#endregion", "#region", "/", "endregion", "region"]
+        }
+      }
+    ]
   }
 }

@@ -7,15 +7,19 @@ Objects are considered empty if they have no own enumerable string keyed propert
 Array-like values such as arguments objects, arrays, buffers, strings, or jQuery-like collections are considered empty if they have a length of 0. Similarly, maps and sets are considered empty if they have a size of 0.
 
 ## Install
+
 ```
 yarn add @almeidx/is-empty
 ```
+
 or
+
 ```
 npm i @almeidx/is-empty
 ```
 
 ## Usage
+
 ```ts
 isEmpty(value?: any): boolean
 ```
@@ -39,6 +43,6 @@ isEmpty(1);
 isEmpty([1, 2, 3]);
 // => false
 
-isEmpty({ 'a': 1 });
+isEmpty({ a: 1 });
 // => false
 ```

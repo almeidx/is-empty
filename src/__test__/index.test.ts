@@ -1,3 +1,5 @@
+/* eslint-disable prefer-rest-params */
+
 import isEmpty from '..';
 
 describe('isEmpty()', () => {
@@ -25,17 +27,26 @@ describe('isEmpty()', () => {
   });
 
   it('should work with `arguments` objects', () => {
-    expect(isEmpty((function n(): IArguments {
-      return arguments;
-    }.apply(undefined)))).toBe(true);
+    expect(
+      isEmpty(
+        function n(): IArguments {
+          return arguments;
+        }.apply(undefined),
+      ),
+    ).toBe(true);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    expect(isEmpty((function n(a: number): IArguments {
-      return arguments;
-    }.apply(undefined, [1])))).toBe(false);
+    expect(
+      isEmpty(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        function n(_a: number): IArguments {
+          return arguments;
+        }.apply(undefined, [1]),
+      ),
+    ).toBe(false);
   });
 
   it('should work with prototype objects', () => {
-    function foo(): void {}
+    function foo(): void {} // eslint-disable-line @typescript-eslint/no-empty-function
     foo.prototype = { constructor: foo };
 
     expect(isEmpty(foo.prototype)).toBe(true);

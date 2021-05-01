@@ -25,19 +25,19 @@ const getTag = (value: any): string => {
   if (value == null) {
     return value === undefined ? '[object Undefined]' : '[object Null]';
   }
-  return (Symbol.toStringTag in Object(value))
-    ? getRawTag(value)
-    : Object.prototype.toString.call(value);
+  return Symbol.toStringTag in Object(value) ? getRawTag(value) : Object.prototype.toString.call(value);
 };
 
 const isFunction = (value: any): boolean => {
   if (value == null || (typeof value !== 'object' && typeof value !== 'function')) return false;
 
   const tag = getTag(value);
-  return tag === '[object Function]'
-    || tag === '[object GeneratorFunction]'
-    || tag === '[object AsyncFunction]'
-    || tag === '[object Proxy]';
+  return (
+    tag === '[object Function]' ||
+    tag === '[object GeneratorFunction]' ||
+    tag === '[object AsyncFunction]' ||
+    tag === '[object Proxy]'
+  );
 };
 
 function isPrototype(value: any): boolean {
@@ -63,16 +63,16 @@ export const isEmpty = (value?: any): boolean => {
   if (typeof value === 'number') return !value;
 
   if (
-    (typeof value.length === 'number' && !isFunction(value))
-    && (
-      Array.isArray(value)
-      || typeof value === 'string'
-      || typeof value.splice === 'function'
-      || Buffer.isBuffer(value)
-      || util.types.isTypedArray(value)
-      || (typeof value === 'object' && getTag(value) === '[object Arguments]')
-    )
-  ) return !value.length;
+    typeof value.length === 'number' &&
+    !isFunction(value) &&
+    (Array.isArray(value) ||
+      typeof value === 'string' ||
+      typeof value.splice === 'function' ||
+      Buffer.isBuffer(value) ||
+      util.types.isTypedArray(value) ||
+      (typeof value === 'object' && getTag(value) === '[object Arguments]'))
+  )
+    return !value.length;
 
   const tag = getTag(value);
   if (tag === '[object Map]' || tag === '[object Set]') return !value.size;

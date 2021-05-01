@@ -6,6 +6,8 @@ src/
 .eslintrc.json
 .gitattributes
 .gitignore
+.prettierignore
+.prettierrc.json
 jest.config.js
 tsconfig.json
 tsconfig.eslint.json
